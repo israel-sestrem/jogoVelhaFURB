@@ -17,7 +17,6 @@ public class JogoDaVelha_Jogador {
 
         do{
             System.out.println("Jogador ..");
-
             System.out.println("  linha: ");
             linha = teclado.nextLine();
 

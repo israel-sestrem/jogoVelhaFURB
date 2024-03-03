@@ -11,46 +11,27 @@ public class JogoDaVelha {
 
         int numeroSorteado = jogoMapa.sortear(0,1);
 
-        boolean jogadorInicia = numeroSorteado == 0;
+        boolean vezJogador = numeroSorteado == 0;
         int numeroJogadas = 0;
         boolean ganhouOuEmpatou;
 
         jogoMapa.desenha(numeroJogadas);
 
-        if(jogadorInicia){
-            for(int i=0; i<9; i++){
-                numeroJogadas++;
+        for(int i=0; i<9; i++){
+            numeroJogadas++;
+            if(vezJogador) {
                 ganhouOuEmpatou = jogoJogador.joga(teclado);
                 jogoMapa.desenha(numeroJogadas);
-
-                if(ganhouOuEmpatou){
-                    break;
-                }
-
+            } else {
                 ganhouOuEmpatou = jogoPC.joga();
                 jogoMapa.desenha(numeroJogadas);
-
-                if(ganhouOuEmpatou){
-                    break;
-                }
             }
-        } else {
-            for(int i=0; i<9; i++){
-                numeroJogadas++;
-                ganhouOuEmpatou = jogoPC.joga();
-                jogoMapa.desenha(numeroJogadas);
 
-                if(ganhouOuEmpatou){
-                    break;
-                }
-
-                ganhouOuEmpatou = jogoJogador.joga(teclado);
-                jogoMapa.desenha(numeroJogadas);
-
-                if(ganhouOuEmpatou){
-                    break;
-                }
+            if(ganhouOuEmpatou){
+                break;
             }
+
+            vezJogador = !vezJogador;
         }
     }
 
